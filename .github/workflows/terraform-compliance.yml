@@ -36,6 +36,6 @@ jobs:
           terraform init && terraform plan -out=plan.out -var-file env.BRANCH.tfvars && terraform show -json plan.out > plan.out.json
 
       - name: terraform-compliance
-        id: terraform-compliance from local
+        id: terraform-compliance
         run: |
           terraform-compliance -p plan.out.json -f /terraform-compliance/features/

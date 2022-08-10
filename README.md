@@ -64,8 +64,7 @@ module "usa-elasticache" {
     `ENVIRONMENT=BRANCH_NAME`
     `terraform init`
     - If using a backend S3 bucket
-    `terraform init -backend-config="bucket=$TF_STATE_BUCKET" -backend-config="key=$REPO_NAME" -backend=true -backend-config="dynamodb_table=$TF_LOCK_TABLE"`
-    - Setting the workspace
+        - `terraform init -backend-config="bucket=$TF_STATE_BUCKET" -backend-config="key=$REPO_NAME" -backend=true -backend-config="dynamodb_table=$TF_LOCK_TABLE"`
     `terraform workspace select ${ENVIRONMENT} || terraform workspace new ${ENVIRONMENT}`
     `terraform plan -out=plan.out -var-file ${ENVIRONMENT}.tfvars`
     `terraform apply plan.out`

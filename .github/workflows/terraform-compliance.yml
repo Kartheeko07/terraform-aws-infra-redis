@@ -28,7 +28,7 @@ jobs:
         run: echo "BRANCH=production"
 
       - name: Set workspace
-        run: echo env.BRANCH
+        run: echo $BRANCH
 
       - name: terraform plan
         id: plan

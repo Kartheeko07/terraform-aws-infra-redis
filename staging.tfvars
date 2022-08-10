@@ -1,4 +1,4 @@
-############# Region Specific Redis Values for Production ################
+############# Region Specific Redis Values for Staging ################
 
 #### For us-east-2 ##########
 vpc_id_us_east-2 = ""
@@ -24,15 +24,15 @@ redis_availability_zones_ap-east-1 = [
 redis_ingress_rules_ap-east-1 = []
 redis_subnet_ids_ap-east-1    = []
 
-############# Common Redis Details for Production ################
+############# Common Redis Details for Staging ################
 
-redis_name                       = "redis-production"
+redis_name                       = "redis-staging"
 redis_cluster_size               = "2"
 redis_automatic_failover_enabled = true
 redis_node_type                  = "cache.m5.large"
 redis_port                       = "6379"
 redis_family                     = "redis6.x"
-redis_parameter_group_name       = "redis-production-cache-params-6-x"
+redis_parameter_group_name       = "redis-staging-cache-params-6-x"
 redis_apply_immediately          = "true"
 redis_auto_minor_version_upgrade = "false"
 redis_multi_az_enabled           = true
@@ -45,7 +45,7 @@ redis_version                    = "6.x"
 redis_mandatory_tags = {
   Service       = "ElastiCache Redis"
   Owner         = "Infrastructure"
-  Name          = "Redis-Production"
+  Name          = "Redis-staging"
   Clasification = "Internal"
 }
 # Can put the below variable also into region specific variables
@@ -53,7 +53,7 @@ redis_additional_tags = {
   ManagedBy = "Terraform"
   CreatedBy = "Terraform"
 }
-redis_secret_name                          = "redis-production"
+redis_secret_name                          = "redis-staging"
 redis_cluster_mode_enabled                 = true
 redis_cluster_mode_replicas_per_node_group = 1
 redis_cluster_mode_num_node_groups         = 2

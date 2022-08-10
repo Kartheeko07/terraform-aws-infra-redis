@@ -64,14 +64,14 @@ module "usa-elasticache" {
 ## Deploying IAC
 1. Make sure all your module code and providers for all regions is put in 
 2. Steps to make sure your code runs
-    `ENVIRONMENT=BRANCH_NAME`
-    `terraform init`
+    - `ENVIRONMENT=BRANCH_NAME`
+    - `terraform init`
     If using a backend S3 bucket
-    `terraform init -backend-config="bucket=$TF_STATE_BUCKET" -backend-config="key=$REPO_NAME" -backend=true -backend-config="dynamodb_table=$TF_LOCK_TABLE"`
+    - `terraform init -backend-config="bucket=$TF_STATE_BUCKET" -backend-config="key=$REPO_NAME" -backend=true - -backend-config="dynamodb_table=$TF_LOCK_TABLE"`
     Setting the workspace
-    `terraform workspace select ${ENVIRONMENT} || terraform workspace new ${ENVIRONMENT}`
-    `terraform plan -out=plan.out -var-file ${ENVIRONMENT}.tfvars`
-    `terraform apply plan.out`
+    - `terraform workspace select ${ENVIRONMENT} || terraform workspace new ${ENVIRONMENT}`
+    - `terraform plan -out=plan.out -var-file ${ENVIRONMENT}.tfvars`
+    - `terraform apply plan.out`
 
 ## Docs
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

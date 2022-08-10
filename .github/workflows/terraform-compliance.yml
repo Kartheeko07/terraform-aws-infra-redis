@@ -1,41 +1,41 @@
-on: 
+on:
   push:
     branches:
       - main
       - staging
-
+      
 jobs:
   terraform:
-      name: terraform CI
-      runs-on: ubuntu-latest
+    name: terraform CI
+    runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v2
-    - uses: hashicorp/setup-terraform@v1
-    - uses: terraform-compliance/github_action@main
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+      - uses: terraform-compliance/github_action@main
 
-    - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch 
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
 
-  # extract branch name
-    - name: Set env.BRANCH
-      run: echo "BRANCH=$(echo $GITHUB_REF | cut -d'/' -f 3)" >> $GITHUB_ENV
+      # extract branch name
+      - name: Set env.BRANCH
+        run: echo "BRANCH=$(echo $GITHUB_REF | cut -d'/' -f 3)" >> $GITHUB_ENV
 
-    - name: Is main?
-      if: env.BRANCH == 'main'
-      run: echo "BRANCH=production"
+      - name: Is main?
+        if: env.BRANCH == 'main'
+        run: echo "BRANCH=production"
 
-    - name: Set workspace
-      run: echo env.BRANCH
+      - name: Set workspace
+        run: echo env.BRANCH
 
-    - name: terraform plan
-      id: plan
-      run: |
-        terraform init && terraform plan -out=plan.out -var-file env.BRANCH.tfvars && terraform show -json plan.out > plan.out.json
-    
-    - name: terraform-compliance
-      id: terraform-compliance from local
-      run: |
-        terraform-compliance -p plan.out.json -f /terraform-compliance/features/
+      - name: terraform plan
+        id: plan
+        run: |
+          terraform init && terraform plan -out=plan.out -var-file env.BRANCH.tfvars && terraform show -json plan.out > plan.out.json
+
+      - name: terraform-compliance
+        id: terraform-compliance from local
+        run: |
+          terraform-compliance -p plan.out.json -f /terraform-compliance/features/

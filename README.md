@@ -10,11 +10,8 @@ This is the repository to creating/maintaining the AWS ElasticCache Infrastructu
   - [Environments](#environments)
   - [What's Included](#whats-included)
   - [Deploying IAC](#deploying-iac)
-  - [Docs](#docs)
   - [Requirements](#requirements)
-  - [Providers](#providers)
-  - [Inputs](#inputs)
-  - [Outputs](#outputs)
+  - [Pre-Commit-Hook](#pre-commit-hook)
   
 
 ## Overview
@@ -66,14 +63,13 @@ module "usa-elasticache" {
 2. Steps to make sure your code runs
     `ENVIRONMENT=BRANCH_NAME`
     `terraform init`
-    If using a backend S3 bucket
+    - If using a backend S3 bucket
     `terraform init -backend-config="bucket=$TF_STATE_BUCKET" -backend-config="key=$REPO_NAME" -backend=true -backend-config="dynamodb_table=$TF_LOCK_TABLE"`
-    Setting the workspace
+    - Setting the workspace
     `terraform workspace select ${ENVIRONMENT} || terraform workspace new ${ENVIRONMENT}`
     `terraform plan -out=plan.out -var-file ${ENVIRONMENT}.tfvars`
     `terraform apply plan.out`
 
-## Docs
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
@@ -81,19 +77,9 @@ module "usa-elasticache" {
 |------|---------|
 | terraform | >= 0.13.0, < 0.15.0 |
 
-## Providers
-
-No provider.
-
-## Inputs
-
-No input.
-
-## Outputs
-
-No output.
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Pre-Commit-Hook
 
 1. Configure `pre-commit` to run the hooks for every new repo you checkout.  https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories 
 ```

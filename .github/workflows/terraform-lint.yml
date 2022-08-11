@@ -6,16 +6,6 @@ on:
       - '*'
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-    name: Validate terraform configuration
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: terraform validate
-        uses: dflook/terraform-validate@v1
-
   fmt-check:
     runs-on: ubuntu-latest
     name: Check formatting of terraform files
@@ -25,3 +15,13 @@ jobs:
 
       - name: terraform fmt
         uses: dflook/terraform-fmt-check@v1
+
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate terraform configuration
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: terraform validate
+        uses: dflook/terraform-validate@v1

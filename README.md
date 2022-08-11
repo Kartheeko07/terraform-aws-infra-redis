@@ -11,12 +11,13 @@ This is the repository to creating/maintaining the AWS ElasticCache Infrastructu
   - [What's Included](#whats-included)
   - [Deploying IAC](#deploying-iac)
   - [Requirements](#requirements)
+  - [Terraform-Compliance](#terraform-compliance)
   - [Pre-Commit-Hook](#pre-commit-hook)
   
 
 ## Overview
 This is the infra repository which consumes the terraform module to spin up an AWS ElastiCache Cluster.
-The terraform module will be controlled through its dedicated release numbers which can keep changing over time whenever any new changes are pushed to the module itself.
+The changes to the terraform module can be controlled through its dedicated release numbers which can keep changing over time whenever any new changes are pushed to the module itself.
 
 ## Module Usage 
 ```hcl
@@ -78,6 +79,10 @@ module "usa-elasticache" {
 | terraform | >= 0.13.0, < 0.15.0 |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Terraform-Compliance
+Terraform-compliance is a lightweight, security and compliance focused test framework against terraform to enable negative testing capability for your infrastructure-as-code.
+In this repository we have defined a tagging rule under /terraform-compliance/features
 
 ## Pre-Commit-Hook
 

@@ -1,6 +1,6 @@
 module "usa-elasticache" {
 
-  source = "git@github.com:Kartheeko07/terraform-aws-elasticache-module.git?ref=v0.0.2"
+  source = "git@github.com:Kartheeko07/terraform-aws-elasticache-module.git?ref=v0.0.4"
   providers = {
     aws = aws.usa
   }
@@ -34,7 +34,7 @@ module "usa-elasticache" {
 
 module "europe-elasticache" {
 
-  source = "git@github.com:Kartheeko07/terraform-aws-elasticache-module.git?ref=v0.0.2"
+  source = "git@github.com:Kartheeko07/terraform-aws-elasticache-module.git?ref=v0.0.4"
   providers = {
     aws = aws.europe
   }
@@ -68,7 +68,7 @@ module "europe-elasticache" {
 
 module "asia-elasticache" {
 
-  source = "git@github.com:Kartheeko07/terraform-aws-elasticache-module.git?ref=v0.0.2"
+  source = "git@github.com:Kartheeko07/terraform-aws-elasticache-module.git?ref=v0.0.4"
   providers = {
     aws = aws.asia
   }
